@@ -73,7 +73,7 @@ END
 
       expect {
         _ = ReferenceValidator.new.unresolved_references YAML.safe_load(cfn_yaml_with_missing_ref)
-      }.to raise_error(ParserError, 'Ref target must be string literal: {"Ref"=>{"Fn::GetAtt"=>["someResource", "Fred"]}}')
+      }.to raise_error.with_message('Ref target must be string literal: {"Ref" => {"Fn::GetAtt" => ["someResource", "Fred"]}}')
     end
   end
 
